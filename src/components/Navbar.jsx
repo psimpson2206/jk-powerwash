@@ -10,7 +10,7 @@ const navLinks = [
   { to: '/', label: 'Home' },
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
-  { to: '/portfolio', label: 'Portfolio' },
+  // { to: '/portfolio', label: 'Portfolio' },
   { to: '/book', label: 'Book' },
   { to: '/contact', label: 'Contact' },
 ]
@@ -138,7 +138,7 @@ export default function Navbar() {
         className="hidden w-full border-b border-slate-200 bg-white lg:block"
         aria-label="Main"
       >
-        <ul className="grid w-full grid-cols-6 px-4 sm:px-6 lg:px-10 xl:px-14">
+        <ul className="grid w-full grid-cols-5 px-4 sm:px-6 lg:px-10 xl:px-14">
           {navLinks.map(({ to, label }) => (
             <li key={to} className="min-w-0">
               <NavLink to={to} end={to === '/'} className={navItemClass}>

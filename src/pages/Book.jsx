@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { submitToBusinessEmail } from '../lib/businessContact.js'
 
 const initial = {
   fullName: '',
@@ -16,6 +17,8 @@ export default function Book() {
   const [form, setForm] = useState(initial)
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const setField = (name, value) => {
     setForm((f) => ({ ...f, [name]: value }))
@@ -37,10 +40,35 @@ export default function Book() {
     return Object.keys(next).length === 0
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     if (!validate()) return
-    setSubmitted(true)
+
+    setSending(true)
+    setSubmitError('')
+
+    try {
+      await submitToBusinessEmail({
+        subject: `New booking request from ${form.fullName}`,
+        fields: {
+          name: form.fullName,
+          email: form.email,
+          phone: form.phone,
+          'Service Type': form.serviceType,
+          'Size / Description': form.sizeDescription,
+          'Surface Condition': form.surfaceCondition,
+          'Preferred Date': form.preferredDate,
+          Notes: form.notes || '—',
+        },
+      })
+      setSubmitted(true)
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : 'Unable to send your request. Please try again.',
+      )
+    } finally {
+      setSending(false)
+    }
   }
 
   if (submitted) {
@@ -232,11 +260,18 @@ export default function Book() {
             />
           </div>
 
+          {submitError && (
+            <p className="text-center text-sm text-red-600" role="alert">
+              {submitError}
+            </p>
+          )}
+
           <button
             type="submit"
-            className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-navy"
+            disabled={sending}
+            className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-navy disabled:cursor-not-allowed disabled:opacity-60"
           >
-            Submit request
+            {sending ? 'Sending…' : 'Submit request'}
           </button>
         </motion.form>
       </div>

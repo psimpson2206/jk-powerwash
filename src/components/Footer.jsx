@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo.jsx'
+import { BUSINESS_EMAIL } from '../lib/businessContact.js'
 
 const PHONE_DISPLAY = '(717)-716-4003'
 const PHONE_HREF = 'tel:+17177164003'
@@ -7,7 +8,7 @@ const PHONE_HREF = 'tel:+17177164003'
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
-  { to: '/portfolio', label: 'Portfolio' },
+  // { to: '/portfolio', label: 'Portfolio' },
   { to: '/book', label: 'Book' },
   { to: '/about', label: 'About' },
   { to: '/contact', label: 'Contact' },
@@ -56,10 +57,10 @@ export default function Footer() {
             </li>
             <li>
               <a
-                href="mailto:jackson@lppowerwash.com"
+                href={`mailto:${BUSINESS_EMAIL}`}
                 className="hover:text-white"
               >
-                jackson@lppowerwash.com
+                {BUSINESS_EMAIL}
               </a>
             </li>
             <li className="pt-1 leading-relaxed">

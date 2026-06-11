@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { BUSINESS_EMAIL, submitToBusinessEmail } from '../lib/businessContact.js'
 
 const initial = { name: '', email: '', message: '' }
 
@@ -7,6 +8,8 @@ export default function Contact() {
   const [form, setForm] = useState(initial)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const setField = (name, value) => {
     setForm((f) => ({ ...f, [name]: value }))
@@ -24,10 +27,30 @@ export default function Contact() {
     return Object.keys(next).length === 0
   }
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault()
     if (!validate()) return
-    setSent(true)
+
+    setSending(true)
+    setSubmitError('')
+
+    try {
+      await submitToBusinessEmail({
+        subject: `New contact message from ${form.name}`,
+        fields: {
+          name: form.name,
+          email: form.email,
+          message: form.message,
+        },
+      })
+      setSent(true)
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error ? err.message : 'Unable to send your message. Please try again.',
+      )
+    } finally {
+      setSending(false)
+    }
   }
 
   const input =
@@ -126,11 +149,18 @@ export default function Contact() {
                 <p className="mt-1 text-sm text-red-600">{errors.message}</p>
               )}
             </div>
+            {submitError && (
+              <p className="text-sm text-red-600" role="alert">
+                {submitError}
+              </p>
+            )}
+
             <button
               type="submit"
-              className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-navy"
+              disabled={sending}
+              className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-navy disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Send message
+              {sending ? 'Sending…' : 'Send message'}
             </button>
           </motion.form>
 
@@ -155,10 +185,10 @@ export default function Contact() {
                   Email
                 </span>
                 <a
-                  href="mailto:jackson@lppowerwash.com"
+                  href={`mailto:${BUSINESS_EMAIL}`}
                   className="mt-1 block hover:text-white"
                 >
-                  jackson@lppowerwash.com
+                  {BUSINESS_EMAIL}
                 </a>
               </li>
               <li>
