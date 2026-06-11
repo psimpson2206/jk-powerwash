@@ -1,7 +1,23 @@
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { useState, useEffect, useCallback, useRef } from 'react'
-import Logo from '../components/Logo.jsx'
+import heroHome from '../assets/hero-home-bg.jpg'
+
+const PHONE_DISPLAY = '(717)-716-4003'
+const PHONE_HREF = 'tel:+17177164003'
+
+function PhoneIcon({ className }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      aria-hidden
+    >
+      <path d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.25 1.01l-2.2 2.22z" />
+    </svg>
+  )
+}
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -211,71 +227,55 @@ function SectionReveal({ children, className = '' }) {
 export default function Home() {
   return (
     <div>
-      <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden bg-navy px-6 py-24 text-center text-white lg:px-12">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-50"
-          style={{
-            background: `
-              radial-gradient(ellipse 80% 50% at 50% -20%, rgba(147, 197, 253, 0.45), transparent 50%),
-              radial-gradient(ellipse 60% 40% at 100% 50%, rgba(255, 255, 255, 0.12), transparent 45%),
-              radial-gradient(ellipse 50% 35% at 0% 80%, rgba(59, 130, 246, 0.25), transparent 50%),
-              repeating-linear-gradient(
-                105deg,
-                transparent,
-                transparent 2px,
-                rgba(255,255,255,0.04) 2px,
-                rgba(255,255,255,0.04) 4px
-              ),
-              linear-gradient(180deg, #1a56db 0%, #1557c0 55%, #1a56db 100%)
-            `,
-          }}
+      <section className="relative flex min-h-[min(100svh,900px)] flex-col items-center justify-center overflow-hidden px-6 py-28 text-center text-white lg:min-h-[85vh] lg:px-12">
+        <img
+          src={heroHome}
+          alt=""
+          className="absolute inset-0 h-full w-full object-cover object-center"
+          aria-hidden
         />
-        <div className="relative z-10 mx-auto flex max-w-4xl flex-col items-center">
-          <motion.div
+        <div
+          className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/55 via-black/50 to-black/65"
+          aria-hidden
+        />
+        <div className="relative z-10 mx-auto flex max-w-5xl flex-col items-center">
+          <motion.h1
             custom={0}
             variants={fadeUp}
             initial="hidden"
             animate="show"
+            className="font-display text-2xl font-bold uppercase leading-tight tracking-wide sm:text-3xl md:text-4xl lg:text-[2.75rem] lg:leading-tight"
           >
-            <Logo size="lg" />
-          </motion.div>
-          <motion.h1
+            Restoring Lancaster one home at a time
+          </motion.h1>
+          <motion.p
             custom={1}
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="mt-8 font-display text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl"
+            className="mt-5 font-display text-lg font-bold uppercase tracking-wide sm:text-xl md:text-2xl"
           >
-            Professional Power Washing in Lancaster & Pittsburgh
-          </motion.h1>
-          <motion.p
+            Request your free estimate today!
+          </motion.p>
+          <motion.div
             custom={2}
             variants={fadeUp}
             initial="hidden"
             animate="show"
-            className="mt-5 max-w-2xl text-base text-white/90 sm:text-lg"
+            className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
           >
-            Residential & commercial surface cleaning done right. Serving
-            Allegheny County and Lancaster County, PA.
-          </motion.p>
-          <motion.div
-            custom={3}
-            variants={fadeUp}
-            initial="hidden"
-            animate="show"
-            className="mt-10 flex flex-wrap items-center justify-center gap-4"
-          >
+            <a
+              href={PHONE_HREF}
+              className="inline-flex items-center justify-center gap-2 bg-transparent px-5 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand sm:px-6 sm:text-base"
+            >
+              <PhoneIcon className="h-4 w-4 shrink-0 sm:h-5 sm:w-5" />
+              Call us: {PHONE_DISPLAY}
+            </a>
             <Link
               to="/book"
-              className="inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-900/25 transition hover:bg-blue-600"
+              className="inline-flex items-center justify-center bg-transparent px-5 py-3.5 font-display text-sm font-bold uppercase tracking-wide text-white transition hover:bg-brand sm:px-6 sm:text-base"
             >
-              Get a Free Quote
-            </Link>
-            <Link
-              to="/portfolio"
-              className="inline-flex rounded-full border border-white/30 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/20"
-            >
-              See Our Work
+              Get a free estimate
             </Link>
           </motion.div>
         </div>
@@ -336,7 +336,7 @@ export default function Home() {
           <div className="mt-10 flex justify-center">
             <Link
               to="/services"
-              className="inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
+              className="inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy"
             >
               View All Services
             </Link>
@@ -370,7 +370,7 @@ export default function Home() {
           </p>
           <Link
             to="/book"
-            className="mt-8 inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
+            className="mt-8 inline-flex rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy"
           >
             Book Now
           </Link>

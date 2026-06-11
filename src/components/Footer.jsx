@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import Logo from './Logo.jsx'
 
+const PHONE_DISPLAY = '(717)-716-4003'
+const PHONE_HREF = 'tel:+17177164003'
+
 const quickLinks = [
   { to: '/', label: 'Home' },
   { to: '/services', label: 'Services' },
@@ -15,14 +18,11 @@ export default function Footer() {
     <footer className="bg-navy text-white">
       <div className="mx-auto grid max-w-7xl gap-12 px-6 py-16 md:grid-cols-3 lg:px-12">
         <div className="space-y-4">
-          <div className="flex items-center gap-3">
+          <Link to="/" className="inline-block rounded-lg bg-white/95 p-2">
             <Logo size="sm" />
-            <span className="font-display text-sm font-semibold leading-snug">
-              Lancaster & Pittsburgh Powerwashing
-            </span>
-          </div>
+          </Link>
           <p className="max-w-sm text-sm text-white/80">
-            Professional power washing serving Lancaster & Pittsburgh
+            Professional exterior cleaning for residential and commercial properties.
           </p>
         </div>
 
@@ -50,8 +50,8 @@ export default function Footer() {
           </h3>
           <ul className="space-y-3 text-sm text-white/85">
             <li>
-              <a href="tel:+15558675309" className="hover:text-white">
-                555-867-5309
+              <a href={PHONE_HREF} className="font-semibold text-brand hover:text-white">
+                {PHONE_DISPLAY}
               </a>
             </li>
             <li>
@@ -72,7 +72,7 @@ export default function Footer() {
       </div>
 
       <div className="border-t border-white/10 py-6 text-center text-xs text-white/60">
-        © 2025 Lancaster & Pittsburgh Powerwashing. All rights reserved.
+        © 2025 United Exterior Care LLC. All rights reserved.
       </div>
     </footer>
   )

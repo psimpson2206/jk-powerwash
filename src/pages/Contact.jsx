@@ -50,7 +50,7 @@ export default function Contact() {
               setSent(false)
               setForm(initial)
             }}
-            className="mt-8 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
+            className="mt-8 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy"
           >
             Send another message
           </button>
@@ -128,7 +128,7 @@ export default function Contact() {
             </div>
             <button
               type="submit"
-              className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
+              className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-navy"
             >
               Send message
             </button>
@@ -146,8 +146,8 @@ export default function Contact() {
                 <span className="block text-xs font-semibold uppercase tracking-wide text-white/50">
                   Phone
                 </span>
-                <a href="tel:+15558675309" className="mt-1 block hover:text-white">
-                  555-867-5309
+                <a href="tel:+17177164003" className="mt-1 block font-semibold text-brand hover:text-white">
+                  (717)-716-4003
                 </a>
               </li>
               <li>

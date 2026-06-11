@@ -60,7 +60,7 @@ export default function Book() {
               setSubmitted(false)
               setForm(initial)
             }}
-            className="mt-8 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
+            className="mt-8 rounded-full bg-accent px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy"
           >
             Submit another request
           </button>
@@ -234,7 +234,7 @@ export default function Book() {
 
           <button
             type="submit"
-            className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-blue-600"
+            className="w-full rounded-full bg-accent py-3 text-sm font-semibold text-white transition hover:bg-navy"
           >
             Submit request
           </button>
