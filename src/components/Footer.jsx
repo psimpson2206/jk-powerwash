@@ -23,7 +23,7 @@ export default function Footer() {
             <Logo size="sm" />
           </Link>
           <p className="max-w-sm text-sm text-white/80">
-            Professional exterior cleaning for residential and commercial properties.
+            Professional power washing for residential and commercial properties.
           </p>
         </div>
 

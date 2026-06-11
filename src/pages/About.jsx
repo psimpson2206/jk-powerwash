@@ -11,7 +11,7 @@ const featureCards = [
       </svg>
     ),
     title: 'Quality First',
-    text: 'From clean edges to healthy beds, we treat every lawn and landscape like our own.',
+    text: 'We never cut corners. Every driveway, siding, and surface gets our full attention and best effort.',
   },
   {
     icon: (
@@ -40,9 +40,9 @@ export default function About() {
             <span className="text-brand">United Exterior Care</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-600 sm:text-lg">
-            A locally owned and operated landscaping company dedicated to keeping
-            Lancaster County and the Pittsburgh area looking sharp — one property
-            at a time.
+            A locally owned and operated power washing company dedicated to
+            making Lancaster County and the Pittsburgh area shine — one home at a
+            time.
           </p>
         </motion.div>
       </section>
@@ -70,23 +70,21 @@ export default function About() {
               <p>
                 I&apos;m Jackson Kautz, a student at the University of Pittsburgh
                 and the owner of United Exterior Care LLC. I started this business
-                three years ago mowing lawns on weekends, and it has grown into
-                full-service landscaping for homes and businesses across the
-                region.
+                three years ago with a pressure washer and a lot of drive, and
+                I&apos;ve been growing it ever since.
               </p>
               <p>
-                What began as side work turned into something I&apos;m genuinely
-                proud of. I take care of every job personally — lawn mowing,
-                mulching, bed maintenance, seasonal cleanups, and property
-                upkeep — so you always know who is on your property. I show up on
-                time, communicate clearly, and leave every yard neater and
-                healthier than I found it.
+                What started as a way to earn money on weekends turned into
+                something I&apos;m genuinely proud of. I take care of every job
+                personally, which means you&apos;re always getting the owner
+                on-site — not a crew you&apos;ve never met. I care about doing
+                the work right, showing up on time, and leaving your property
+                looking better than I found it.
               </p>
               <p>
-                Whether you need weekly lawn care, a one-time spring cleanup, or
-                ongoing maintenance for a commercial property, I&apos;ll give you
-                a straight quote and dependable service you can count on all
-                season long.
+                Whether you&apos;re a homeowner looking to clean up your driveway
+                or siding, or a property manager with a bigger commercial job,
+                I&apos;ll give you a straight quote and get it done.
               </p>
             </div>
           </motion.div>
